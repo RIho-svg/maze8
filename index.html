@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unity WebGL with Custom Template</title>
-  <script src="https://cdn.jsdelivr.net/npm/webgazer"></script>
+  <title>Unity WebGL Game</title>
 </head>
 <body>
   <canvas id="unity-canvas"></canvas>
+  <script src="Build/Build.loader.js"></script> <!-- 必須 -->
   <script>
-    var unityInstance = null;
     createUnityInstance(document.querySelector("#unity-canvas"), {
       dataUrl: "Build/Build.data",
       frameworkUrl: "Build/Build.framework.js",
       codeUrl: "Build/Build.wasm",
-      streamingAssetsUrl: "StreamingAssets",
     }).then(function (instance) {
-      unityInstance = instance;
+      console.log("Unity instance loaded successfully!");
+    }).catch(function (err) {
+      console.error("Error loading Unity instance:", err);
     });
   </script>
 </body>
